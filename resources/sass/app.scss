@@ -1,0 +1,751 @@
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
+@import '~@fortawesome/fontawesome-free/css/regular';
+@import '~@fortawesome/fontawesome-free/css/solid';
+@import '~@fortawesome/fontawesome-free/css/brands';
+@import '_variables';
+
+
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    outline: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-family !important;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    position: relative;
+    color: $color-text;
+    background-color: #fff;    
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $color-main;
+}
+
+button {
+	cursor: pointer;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled,
+a:disabled {
+	opacity: .7;
+	cursor: not-allowed !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: $color-main !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * custom
+ */
+.badge {
+    color: #fff;
+    padding: 3px 5px;
+    font-size: 9px;
+    line-height: 1.1;
+    border-radius: 5px;
+
+    &.badge-default {
+        background-color: #777;
+    }
+    
+    &.badge-primary {
+        background-color: #337ab7;
+    }
+    
+    &.badge-success {
+        background-color: #5cb85c;
+    }
+    
+    &.badge-info {
+        background-color: #5bc0de;
+    }
+    
+    &.badge-warning {
+        background-color: #f0ad4e;
+    }
+    
+    &.badge-danger {
+        background-color: #d9534f;
+    }
+}
+
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    & .form-group {
+        flex: 1;
+        padding-right: .5rem;
+
+        &:last-child {
+            padding-right: 0;
+        }
+
+        & label {
+            display: block;
+        }
+
+        & input,
+        & select {
+            width: 100%;
+            padding: 5px 7px;
+            font-size: .9rem;
+            line-height: 1.1;
+            border-radius: 3px;
+            border: 1px solid $color-border;
+        }
+    }
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    & thead {
+        & tr {
+            & th {
+                padding: 7px 5px;
+                font-size: .9rem;
+                line-height: 1.1;
+                background-color: #f9f9f9;
+                border: 1px solid $color-border;
+            }
+        }
+    }
+
+    & tbody {
+        & tr {
+            & td {
+                font-size: .8rem;
+                line-height: 1.1;
+                padding: 5px;
+                border: 1px solid $color-border;
+
+                &:last-child {
+                    text-align: center;
+                }
+
+                & button {
+                    width: 23px;
+                    height: 23px;
+                    color: $color-text;
+                    background: none;
+                    margin-right: 3px;
+                    border-radius: 5px;
+                    border: 1px solid $color-border;
+
+                    &:hover {
+                        color: $color-main;
+                        border-color: $color-main;
+                    }
+                }
+            }
+        }
+    }
+
+	&.loading {
+		& tbody td {
+		    vertical-align: middle;
+
+			& > span {
+				display: block;
+				min-height: 18px;
+				font-size: 0.9rem;
+			    color: transparent;
+				border-radius: 3px;
+			    background: linear-gradient(to right, #f1f1f1 20%, #e3e3e3 50%, #f1f1f1 80%);
+			    background-size: 500px 100px;
+			    animation-name: moving-gradient;
+			    animation-duration: 1s;
+			    animation-iteration-count: infinite;
+			    animation-timing-function: linear;
+			    animation-fill-mode: forwards;
+
+			    & input,
+			    & span,
+			    & i.fa,
+			    & img {
+			    	visibility: hidden;
+			    }
+
+			    & button {
+			    	visibility: hidden;
+			    	height: 0;
+			    	margin: 0;
+			    }
+			}
+		}
+	}
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
+    & button {
+        background: none;
+        border: 1px solid #5e6168;
+        border-radius: 3px;
+        color: #5e6168;
+        padding: 1px 5px;
+        margin: 0 2px;
+        min-width: 20px;
+
+        &:hover,
+        &.active {
+            border-color: $color-main;
+            color: $color-main;
+        }
+    }
+}
+
+
+form {
+    & .form-group {
+        margin-bottom: 1rem;
+    }
+
+    & label {
+        display: block;
+        line-height: 1.1;
+        margin-bottom: 5px;
+    }
+
+    & input,
+    & select,
+    & textarea {
+        width: 100%;
+        padding: 5px 7px;
+        font-size: .9rem;
+        line-height: 1.1;
+        border-radius: 3px;
+        border: 1px solid $color-border;
+        font-family: $font-family !important;
+    }
+
+    & .input-button-group {
+        position: relative;
+
+        & input {
+            padding-right: 20px;
+        }
+
+        & button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+        }
+    }
+
+    & .input-number-group {
+        position: relative;
+
+        & input {
+            padding-left: 60px;
+        }
+
+        & span {
+            position: absolute;
+            left: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #f1f1f1;
+            padding: 1px 7px;
+            opacity: .8;
+        }
+    }
+
+    & .button-group {
+        text-align: right;
+
+        & button {
+            padding: 5px 8px;
+            line-height: 1.1;
+            margin-left: 3px;
+            background-color: $color-main;
+            color: #fff;
+            border: 1px solid $color-border;
+            border-radius: 5px;
+    
+            &:hover {
+                background-color: $color-main-dark;
+            }
+    
+            &[type=reset] {
+                background-color: transparent;
+                color: $color-text;
+    
+                &:hover {
+                    background-color: $color-border;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * login
+ */
+.login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .container {
+        position: relative;
+        width: 400px;
+        border-radius: 5px;
+        padding: 2rem;
+        overflow: hidden;
+        border: 1px solid #dee2e6;
+        box-shadow: rgb(100 116 139 / 17%) 0px 1px 7px;
+
+        & form {
+            & .error {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9;
+                background: rgb(220 53 69 / 90%);
+                border-radius: 10px;
+                -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+                & .message {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    color: #fff;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 1.1;
+                    padding: 0.5rem;
+                    text-align: center;
+
+                    & .fa {
+                        font-size: 2rem;
+                    }
+
+                    & span {
+                        line-height: 1.1;
+                    }
+                }
+            }
+
+            & .logo {
+                text-align: center;
+
+                & img {
+                    width: 275px;
+                    height: auto;
+                }
+            }
+
+            & .input-container {
+                margin-top: 1.5rem;
+            }
+
+            & .form-group {
+                margin-bottom: 1rem;
+            }
+
+            & label {
+                display: block;
+            }
+
+            & input {
+                width: 100%;
+                padding: 7px 8px;
+                font-size: 1rem;
+                border-radius: 5px;
+                border: 1px solid $color-border;
+
+				&.required {
+					border: 2px solid $color-danger !important;
+				}
+            }
+
+            & button {
+                width: 100%;
+                padding: 10px;
+                color: #fff;
+                background-color: $color-main;
+                border-radius: 5px;
+                border: 1px solid $color-border;
+                transition: all .3s ease-in-out;
+
+                &:hover {
+                    background-color: $color-main-dark;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * main
+ */
+.rty {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    & .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        padding: .5rem 1rem;
+        border-bottom: 1px solid $color-border;
+
+        & .logo {
+            display: flex;
+            align-items: center;
+
+            & img {
+                height: 50px;
+                width: auto;
+            }
+
+            & p {
+                font-size: 1.2rem;
+                line-height: 1.1;
+            }
+        }
+
+        & .user-info {
+            display: flex;
+            align-items: center;
+
+            & button {
+                font-size: 1.2rem;
+                border: none;
+                background: none;
+                margin-left: 10px;
+
+                &:hover {
+                    color: $color-main;
+                }
+            }
+        }
+    }
+
+    & main {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        & .sidebar {
+            width: 300px;
+            padding: 1rem 0 1rem 1rem;
+            border-right: 1px solid $color-border;
+    
+            & nav {
+                margin-top: 1rem;
+
+                & li {
+                    list-style: none;
+                    margin-bottom: 5px;
+    
+                    & a {
+                        display: block;
+                        padding: 15px;
+                        color: $color-text;
+                        display: flex;
+                        align-items: center;
+                        border-radius: 5px 0 0 5px;
+                        transition: all .5s ease-in-out;
+    
+                        & i.fa {
+                            margin-right: 5px;
+                        }
+    
+                        &:hover,
+                        &.active {
+                            background: #f9f9f9;
+                            border: 1px solid #dee2e6;
+                            border-right: none;
+                            margin-right: -1px;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .content {
+            flex: 1;
+            height: 100%;
+            padding: 1rem;
+            background-color: #f9f9f9;
+
+            & > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            & section {
+                min-height: 325px;
+                padding: 1rem;
+                border-radius: 5px;
+                background: #fff;
+                border: 1px solid $color-border;
+                box-shadow: rgb(100 116 139 / 17%) 0px 1px 7px;
+
+                &.table-panel {
+                    flex: 1;
+                    width: 100%;
+                }
+
+                &.form-panel {
+                    width: 30%;
+                    margin-left: 1rem;
+                }
+
+                & .title {
+                    line-height: 1.1;
+                    padding-bottom: .5rem;
+                    margin-bottom: 1rem;
+                    border-bottom: 3px double $color-border;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * users
+ */
+.users {
+    & #tblUsers {
+        & tbody {
+            & tr {
+                & td {
+                    &:nth-child(5) {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * administrators
+ */
+.admin {
+    & #tblAdministrators {
+        & tbody {
+            & tr {
+                & td {
+                    &:nth-child(4) {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * logs
+ */
+.logs {
+    & #tblLogs {
+        & tbody {
+            & tr {
+                & td {
+                    &:nth-child(2) {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+}
+@keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+}
+
+
+
+
+
+
+/**
+ * ----------------------------------------
+ * animation for loading
+ * ----------------------------------------
+ */
+@-webkit-keyframes moving-gradient {
+  	0% {
+    	background-position: -250px 0;
+  	}
+  	100% {
+    	background-position: 250px 0;
+  	}
+}
+
+@keyframes moving-gradient {
+  	0% {
+    	background-position: -250px 0;
+  	}
+  	100% {
+    	background-position: 250px 0;
+  	}
+}
